@@ -6,4 +6,24 @@ pipeline {
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' 
     } // docker
   } // agent
+
+  stages {
+    stage ("Pre-build") {
+        steps {
+            script {
+                sh "echo passed"
+            }
+        } // steps
+    } // stage
+
+    stage("MVN build") {
+        steps {
+            script {
+                sh """
+                   ls -altr
+                """ 
+            }
+        }
+    }
+  }
 } // pipeline 
